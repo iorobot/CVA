@@ -2,13 +2,12 @@
 #include <vector>
 #include "Date.h"
 
-class MarketData
-{
-public:
+class MarketData{
 
-		int NDepo ;
+public:
+		int NDepo;
 		int NFra ;
-		int NSwap =0 ;
+		int NSwap =0;
 		int TDepo ;
 		int TFra ;
 		int TSwap =0;

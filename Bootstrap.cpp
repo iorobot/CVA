@@ -35,10 +35,15 @@ Bootstrap::Bootstrap(MarketData Data) {
 	vector<Date> DatesDepo(Data.Dates.begin(), Data.Dates.begin()+Instruments[0]);
 	vector<double> RatesDepo(Data.Rates.begin(), Data.Rates.begin() + Instruments[0]);
 	vector<Date> DatesFra(Data.Dates.begin() + Data.TDepo, Data.Dates.begin() + Data.TDepo + Instruments[1]);
-	vector<double> Ratesfra(Data.Rates.begin() + Data.TDepo, Data.Rates.begin() + Data.TDepo + Instruments[1]);
+	vector<double> RatesFra(Data.Rates.begin() + Data.TDepo, Data.Rates.begin() + Data.TDepo + Instruments[1]);
+	vector<Date> DatesSwap(Data.Dates.begin() + Data.TDepo + Data.TFra , Data.Dates.begin() + Data.TDepo + Data.TFra +Instruments[2]);
+	vector<double> RatesSwap(Data.Rates.begin() + Data.TDepo + Data.TFra, Data.Rates.begin() + Data.TDepo + Data.TFra + Instruments[2]);
 
 	vector<double> ORatesDepo = BootstrapDepo(RatesDepo, DatesDepo);
 	ORates = ORatesDepo;
+	vector<double>::iterator itF = ORates.end();
+	vector<double> ORatesSwap = BootstrapSwap(RatesSwap, DatesSwap);
+	ORates.insert(itF, ORatesSwap.begin(), ORatesSwap.end());
 	//ODatesFra = BootstrapFra();
 	}
 	
@@ -62,16 +67,18 @@ vector<double> Bootstrap::BootstrapDepo(vector<double> rates , vector<Date> date
 	return OutputRates;
 };
 
-vector<double> Bootstrap::BootstrapFra(std::vector<double> rates, std::vector<Date> dates) {
+vector<double> Bootstrap::BootstrapSwap(std::vector<double> rates, std::vector<Date> dates) {
 	vector<double> OutputRates;
+	float BPV= 0.0;
 	for (int i = 0; i<size(rates); i++) {
-		/*
-		cout << "il tasso  : " << rates[i]<< endl;
-		dates[i].display1();
-		dates[i + 1].display1();
-		cout << "la differenza : " << yearFrac(dates[i], dates[i + 1], 1) << endl;
-		*/
-		OutputRates.push_back(1 / (1 + rates[i] * yearFrac( Settlement , dates[i], 1)));
+		if (i == 0) {
+			BPV += yearFrac(Settlement, dates[i], 1) / (1 + yearFrac(Settlement, dates[i], 1)* 0.00431);
+				OutputRates.push_back(1 / (1 + rates[i] * yearFrac(Settlement, dates[i], 1)));
+		}
+		else {
+			OutputRates.push_back((1 - rates[i] * BPV) / (1 + yearFrac(dates[i - 1], dates[i], 1)*rates[i]));
+			BPV += yearFrac(dates[i - 1], dates[i], 1) * *(OutputRates.end() - 1);	
+		}
 	}
 	return OutputRates;
 
