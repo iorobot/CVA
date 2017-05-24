@@ -12,7 +12,7 @@ using namespace std;
 int main(){
 	//vector<double>* Data = Curve.GetRates(3);
 	// It's missing a function that read from excell so the data is put manually
-	int y;
+
 	std::vector<Date> Dates = { Date(14, 9, 2012),Date(24,9, 2012),Date(17, 10, 2012),Date(19, 11, 2012),Date(17, 12, 2012),Date(17, 1, 2013),Date(18, 2, 2013),
 								Date(18, 3, 2013),Date(17,4,2013), Date(20, 5, 2013), Date(17, 6, 2013), Date(17, 7, 2013), Date(19, 8, 2013), Date(18, 9, 2013),
 								Date(17, 10, 2013), Date(18, 11, 2013),Date(17, 12, 2013) ,Date(17, 1, 2014) ,Date(19, 2, 2014) ,Date(17, 03, 2014),
