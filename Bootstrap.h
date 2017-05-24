@@ -1,19 +1,25 @@
-#include <iostream>
+#include "Date.h"
 #include <vector>
+#include "MarketData.h"
 
 class Bootstrap
 {
 private:
-	std::vector<double> IDates;
-	std::vector<double> IRates; 
-	std::vector<double> ODates;
-	std::vector<double> ORates;
-	std::vector<double> Instruments;
+	std::vector<Date> IDates;
+	std::vector<double> IRates;
+	std::vector<int> Instruments;
 public:
+	Date Settlement;
+	std::vector<Date> ODates;
+	std::vector<double> ORates;
 	Bootstrap();
-	Bootstrap(const int NDepo, const int NFra, const int NSwap);
+	Bootstrap(MarketData Data);
 	~Bootstrap();
-	std::vector<double>* GetInfo(int flag);
+	std::vector<double> BootstrapDepo(std::vector<double> rates, std::vector<Date> dates);
+	std::vector<double> BootstrapFra(std::vector<double> rates, std::vector<Date> dates);
+	//std::vector<double> BootstrapFra();
+	std::vector<double>* GetRates(int flag);
+	std::vector<Date>* GetDates(int flag);
 	
 };
 

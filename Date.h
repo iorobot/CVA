@@ -6,12 +6,12 @@ private:
 	int month;
 	int day;
 	int year;
-
 public:
 	Date();
 	Date(int day, int month, int year);
 	void display1();
-	void display2();
 	void increment();
+	int Dayfrom0();
+
 };
 #endif //DATE_DATE 

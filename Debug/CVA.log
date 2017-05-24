@@ -1,3 +1,9 @@
-﻿  Source.cpp
+﻿  Bootstrap.cpp
+c:\users\gciofini\documents\cva\cva\cva\bootstrap.cpp(54): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+c:\users\gciofini\documents\cva\cva\cva\variousfunction.cpp(18): warning C4715: 'yearFrac': not all control paths return a value
+  Compiling...
+  Source.cpp
+  Generating Code...
   CVA.vcxproj -> C:\Users\gciofini\Documents\CVA\CVA\Debug\CVA.exe
   CVA.vcxproj -> C:\Users\gciofini\Documents\CVA\CVA\Debug\CVA.pdb (Partial PDB)
