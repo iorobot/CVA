@@ -12,8 +12,7 @@ using namespace std;
 int main(){
 	//vector<double>* Data = Curve.GetRates(3);
 	// It's missing a function that read from excell so the data is put manually
-	int x;
-	int xx;
+
 	std::vector<Date> Dates = { Date(14, 9, 2012),Date(24,9, 2012),Date(17, 10, 2012),Date(19, 11, 2012),Date(17, 12, 2012),Date(17, 1, 2013),Date(18, 2, 2013) ,Date(18, 3, 2013),Date(17,4,2013), Date(20, 5, 2013), Date(17, 6, 2013), Date(17, 7, 2013), Date(19, 8, 2013), Date(18, 9, 2013), Date(17, 10, 2013), Date(18, 11, 2013) };
 	std::vector<double>  Rates = {0.00035,0.00087,0.0012,0.00172,0.00252,0.00325,0.00416,0.00493,0.004590,0.00440,0.004310,0.004250,0.004250,0.004240,0.004310,0.004390};
 	MarketData DATA(5, 6, 0, 8, 8, 0, Dates, Rates);
