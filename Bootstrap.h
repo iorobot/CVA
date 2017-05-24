@@ -16,7 +16,7 @@ public:
 	Bootstrap(MarketData Data);
 	~Bootstrap();
 	std::vector<double> BootstrapDepo(std::vector<double> rates, std::vector<Date> dates);
-	std::vector<double> BootstrapFra(std::vector<double> rates, std::vector<Date> dates);
+	std::vector<double> BootstrapSwap(std::vector<double> rates, std::vector<Date> dates);
 	//std::vector<double> BootstrapFra();
 	std::vector<double>* GetRates(int flag);
 	std::vector<Date>* GetDates(int flag);
